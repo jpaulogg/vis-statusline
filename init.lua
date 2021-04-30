@@ -1,4 +1,5 @@
 -- statusline
+-- INSERT » /home/jpgg/.config/vis/plugins/statusline/init.lua [+]        lua | ℓ 2/53 · 𝑐 94/172
 
 vis.events.subscribe(vis.events.WIN_STATUS, function(win)
 	local modes = {
@@ -38,13 +39,13 @@ vis.events.subscribe(vis.events.WIN_STATUS, function(win)
 	elseif count then
 		table.insert(right_parts, count)
 	end
+		
+	table.insert(right_parts, win.syntax or '')
 
 	local numlines = #file.lines
 	local line = 'ℓ '..selection.line..'/'..numlines
 	local col  = '𝑐 '..selection.col..'/'..win.width
 	table.insert(right_parts, line..' · '..col)
-		
-	table.insert(right_parts, win.syntax or '')
 
 	local left  = ' ' .. table.concat(left_parts,  " » ") .. ' '
 	local right = ' ' .. table.concat(right_parts, " | ") .. ' '
