@@ -1,4 +1,6 @@
 -- statusline
+-- boa parte copiada de vis-std.lua
+
 -- INSERT » /home/jpgg/.config/vis/plugins/statusline/init.lua [+]        lua | ℓ 2/53 · 𝑐 94/172
 
 vis.events.subscribe(vis.events.WIN_STATUS, function(win)
@@ -47,6 +49,7 @@ vis.events.subscribe(vis.events.WIN_STATUS, function(win)
 	local col  = '𝑐 '..selection.col..'/'..win.width
 	table.insert(right_parts, line..' · '..col)
 
+	-- concatenate
 	local left  = ' ' .. table.concat(left_parts,  " » ") .. ' '
 	local right = ' ' .. table.concat(right_parts, " | ") .. ' '
 	win:status(left, right);
