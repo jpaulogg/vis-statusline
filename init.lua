@@ -24,7 +24,7 @@ vis.events.subscribe(vis.events.WIN_STATUS, function(win)
 		table.insert(left_parts, mode)
 	end
 
-	table.insert(left_parts, (file.path or '[Sem Nome]') ..
+	table.insert(left_parts, (file.path or '[Sem Nome]'):gsub("^/home/%w+/", "~/") ..
 		(file.modified and ' [+]' or '') .. (vis.recording and ' @' or ''))
 
 	if #win.selections > 1 then
@@ -45,8 +45,8 @@ vis.events.subscribe(vis.events.WIN_STATUS, function(win)
 	table.insert(right_parts, win.syntax or '')
 
 	local numlines = #file.lines
-	local line = 'ℓ '..selection.line..'/'..numlines
-	local col  = '𝑐 '..selection.col..'/'..win.width
+	local line = 'ℓ ' .. selection.line .. '/' .. numlines
+	local col  = '𝑐 ' .. selection.col .. '/' .. win.width
 	table.insert(right_parts, line..' · '..col)
 
 	-- concatenate
